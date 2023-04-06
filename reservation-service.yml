@@ -4,7 +4,7 @@ info:
   version: 1.0.0
   description: This service is in charge of reservation
 channels:
-  revservation/Creation:
+  reservation/creation:
     subscribe:
       message:
         $ref: '#/components/messages/ReservationCreation'
@@ -32,13 +32,10 @@ components:
         examples:
           - reservation:
               summary: sample of a reservation message
-              payload: |-
-                {
-                  "action": "create",
-                  "confirmationNumber": {
-                    "id": "{{randomString(5)}}",
-                    "provider": "TEST",
-                    "value": "{{randomString(8)}}",
-                    "type": "Confirmation"
-                  }
-                }
+              payload:
+                action: "create"
+                confirmationNumber:
+                  id: "{{randomString(5)}}"
+                  provider: "TEST"
+                  value: "{{randomString(8)}}"
+                  type: "Confirmation"
