@@ -11,36 +11,37 @@ channels:
       operationId: reservationCreation
       message:
         $ref: '#/components/messages/ReservationCreation'
-        examples:
-          $ref: '#/components/examples/reservation'
 components:
   messages:
     ReservationCreation:
       payload:
-        type: object
-        properties:
-          action:
-            type: string
-            description: action
-          confirmationNumber:
-            description: confirmation details
-            type: object
-            properties:
-              id:
-                type: string
-              provider:
-                type: string
-              value:
-                type: string
-              type:
-                type: string
+        $ref: '#/components/schemas/ReservationCreation'
         examples:
-          - reservation:
-              summary: sample of a reservation message
-              payload:
+          -  name: reservation
+             summary: sample of a reservation message
+             payload:
                 action: 'create'
                 confirmationNumber:
                   id: '{{randomString(5)}}'
                   provider: 'TEST'
                   value: '{{randomString(8)}}'
                   type: 'Confirmation'
+  schemas:
+    ReservationCreation:
+      type: object
+      properties:
+        action:
+          type: string
+          description: action
+        confirmationNumber:
+          description: confirmation details
+          type: object
+          properties:
+            id:
+              type: string
+            provider:
+              type: string
+            value:
+              type: string
+            type:
+              type: string
