@@ -20,11 +20,11 @@ components:
         - name: reservation
           summary: sample of a reservation message
           payload: |-
-              {"action": 'create',"confirmationNumber": {"id" : '{{randomString(5)}}',"provider" : 'TEST',"value" : '{{randomString(8)}}',"type" : 'Confirmation'}}
+              {"action": "create","confirmationNumber": {"id" : "{{randomString(3)}}","provider" : "TEST","value" : "{{randomString(5)}}","type" : "Confirmation"}}
         - name: reservation2
           summary: sample of a reservation message
           payload: |-
-              {"action": 'create',"confirmationNumber": {"id" : '{{randomString(5)}}',"provider" : 'TEST',"value" : '{{randomString(8)}}',"type" : 'Confirmation'}}
+              {"action": "create","confirmationNumber": {"id" : "{{randomString(5)}}","provider" : "TESTV2","value" : "{{randomString(8)}}","type" : "Confirmation"}}
   schemas:
     ReservationCreation:
       type: object
