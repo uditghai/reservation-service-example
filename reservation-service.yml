@@ -1,8 +1,10 @@
 asyncapi: '2.4.0'
+id: 'urn:io.microcks.example.reservation-service'
 info:
   title: Reservation Service
   version: 1.0.0
   description: This service is in charge of reservation
+defaultContentType: application/json
 channels:
   reservation/creation:
     subscribe:
@@ -10,15 +12,7 @@ channels:
       message:
         $ref: '#/components/messages/ReservationCreation'
         examples:
-          - reservation:
-              summary: sample of a reservation message
-              payload:
-                action: "create"
-                confirmationNumber:
-                  id: "{{randomString(5)}}"
-                  provider: "TEST"
-                  value: "{{randomString(8)}}"
-                  type: "Confirmation"
+          $ref: '#/components/examples/reservation'
 components:
   messages:
     ReservationCreation:
@@ -40,3 +34,13 @@ components:
                 type: string
               type:
                 type: string
+        examples:
+          - reservation:
+              summary: sample of a reservation message
+              payload:
+                action: "create"
+                confirmationNumber:
+                  id: "{{randomString(5)}}"
+                  provider: "TEST"
+                  value: "{{randomString(8)}}"
+                  type: "Confirmation"
